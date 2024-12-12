@@ -55,9 +55,9 @@ def plot_data(data):
                 if column in df.columns:
                     plt.bar([x + i * bar_width for x in indices], df[column], width=bar_width, label=column)
 
-            plt.title(f"System: {system} ({storage})")
+            plt.title(f"{system}: ({storage})")
             plt.xlabel("K")
-            plt.ylabel("Time (ms)")
+            plt.ylabel("Time (s)")
             plt.xticks([x + (len(['HASH', 'SORT', 'FLUSH']) - 1) / 2 * bar_width for x in indices], df['K'])
             plt.legend()
             plt.grid(axis='y')
@@ -65,7 +65,7 @@ def plot_data(data):
             # Save the figure
             output_dir = "output_graphs"
             os.makedirs(output_dir, exist_ok=True)
-            plt.savefig(os.path.join(output_dir, f"{system}_{storage}.png"))
+            plt.savefig(os.path.join(output_dir, f"{system}_{storage}.svg"))
             plt.close()
 
 def main():
